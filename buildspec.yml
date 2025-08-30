@@ -1,39 +1,20 @@
 version: 0.2
 
-# Definição de ambientes (opcional, mas recomendado)
-env:
-  variables:
-    NODE_ENV: production
-
 phases:
-  install:
-    runtime-versions:
-      nodejs: 20 # ajuste conforme a versão do Node que seu projeto usa
-    commands:
-      - echo "Instalando dependências..."
-      - npm install
-
   pre_build:
     commands:
-      - echo "Preparando build..."
-      - npm run lint || echo "Lint warnings" # opcional, se usar lint
+      - echo Instalando dependencias
+      - npm install
 
   build:
     commands:
-      - echo "Iniciando build..."
+      - echo Build iniciado em `date`
       - npm run build
-      - echo "Build finalizado com status $?"
 
   post_build:
     commands:
-      - echo "Fase de pós-build concluída"
+      - echo Build Finalizado em `date`
 
 artifacts:
   files:
-    - build/**/*     # Ajuste para a pasta que realmente contém os arquivos gerados pelo build
-  discard-paths: no
-  base-directory: build  # Diretório raiz dos artifacts (ajuste se necessário)
-
-cache:
-  paths:
-    - node_modules/**/*  # Faz cache das dependências para builds futuros
+    - build/**/*
