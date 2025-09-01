@@ -1,6 +1,12 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Ambiente pronto com Node.js 18"
+
   pre_build:
     commands:
       - echo "Instalando dependencias..."
