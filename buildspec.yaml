@@ -20,4 +20,3 @@ artifacts:
     - build/**/*
     - appspec.yml
     - Scripts/**/*
-
