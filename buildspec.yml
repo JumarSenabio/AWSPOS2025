@@ -1,32 +1,27 @@
-vversion: 0.2
+version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 18
     commands:
-      - echo "Ambiente pronto com Node.js 18"
-
-  pre_build:
-    commands:
-      - echo "Instalando dependências..."
+      - echo Instalando dependencias...
       - npm install
 
   build:
     commands:
-      - echo "Build iniciado em $(date)"
+      - echo Build iniciado em $(date)
       - npm run build
 
   post_build:
     commands:
-      - echo "Build finalizado em $(date)"
+      - echo Build Finalizado em $(date)
 
 artifacts:
   files:
     - build/**/*
     - appspec.yml
     - Scripts/**/*
-
+  discard-paths: yes
+  base-directory: build 
 
 
 
