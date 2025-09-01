@@ -12,15 +12,21 @@ hooks:
 
   BeforeInstall:
     - location: Scripts/before_install.sh
-      timeout: 300
+      timeout: 60
       runas: root
 
   AfterInstall:
     - location: Scripts/after_install.sh
-      timeout: 300
+      timeout: 60
       runas: root
 
   ApplicationStart:
     - location: Scripts/app_start.sh
       timeout: 60
       runas: root
+
+  ValidateService:
+    - location: Scripts/validate_service.sh
+      timeout: 60
+      runas: root
+
