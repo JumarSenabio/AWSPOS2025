@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: /build/
+  - source: /
     destination: /home/ec2-user/app
 
 hooks:
@@ -20,3 +20,9 @@ hooks:
     - location: Scripts/app_start.sh
       timeout: 3600
       runas: root
+
+  ApplicationStop:
+    - location: Scripts/app_stop.sh
+      timeout: 300
+      runas: root
+
