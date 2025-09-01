@@ -1,22 +1,9 @@
 version: 0.2
 
-env:
-  shell: bash
-  variables:
-    NODE_ENV: production
-
 phases:
-  install:
-    runtime-versions:
-      nodejs: 18
-    commands:
-      - echo "Preparando ambiente com Node.js 18..."
-      - node -v
-      - npm -v
-
   pre_build:
     commands:
-      - echo "Instalando dependências..."
+      - echo "Instalando dependencias..."
       - npm install
 
   build:
@@ -30,9 +17,7 @@ phases:
 
 artifacts:
   files:
-    - build/**/*    # todos os arquivos do build
-    - appspec.yml   # arquivo appspec
-    - Scripts/**/*  # todos os scripts da pasta Scripts
-
-
+    - build/**/*
+    - appspec.yml
+    - Scripts/**/*
 
