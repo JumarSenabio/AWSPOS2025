@@ -1,17 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html
+
 hooks:
-  BeforeInstall:
-    - location: Scripts/before_install.sh
-      timeout: 100
-      runas: root
-  AfterInstall:
-    - location: Scripts/after_install.sh
-      timeout: 180
-      runas: root
-  ApplicationStart:
-    - location: Scripts/app_start.sh
-      timeout: 3600
-      runas: root
   ApplicationStop:
     - location: Scripts/app_stop.sh
-      timeout: 180
+      timeout: 60
+      runas: root
+
+  BeforeInstall:
+    - location: Scripts/before_install.sh
+      timeout: 300
+      runas: root
+
+  AfterInstall:
+    - location: Scripts/after_install.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    - location: Scripts/app_start.sh
+      timeout: 60
       runas: root
