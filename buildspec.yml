@@ -3,14 +3,6 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Instalando Node.js 18...
-      - curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
-      - yum install -y nodejs
-      - node -v
-      - npm -v
-
-  pre_build:
-    commands:
       - echo Instalando dependencias...
       - npm install
 
@@ -28,6 +20,7 @@ artifacts:
     - build/**/*
     - appspec.yml
     - Scripts/**/*
+
 
 
 
