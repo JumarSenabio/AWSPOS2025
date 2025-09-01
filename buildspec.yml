@@ -1,19 +1,27 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Instalando Node.js 18...
+      - curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+      - yum install -y nodejs
+      - node -v
+      - npm -v
+
   pre_build:
     commands:
-      - echo "Instalando dependencias..."
+      - echo Instalando dependencias...
       - npm install
 
   build:
     commands:
-      - echo "Build iniciado em $(date)"
+      - echo Build iniciado em $(date)
       - npm run build
 
   post_build:
     commands:
-      - echo "Build finalizado em $(date)"
+      - echo Build Finalizado em $(date)
 
 artifacts:
   files:
