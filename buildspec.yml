@@ -8,15 +8,16 @@ phases:
 
   build:
     commands:
-      - echo Build iniciado em `date`
+      - echo Build iniciado em $(date)
       - npm run build
 
   post_build:
     commands:
-      - echo Build Finalizado em `date`
+      - echo Build Finalizado em $(date)
 
 artifacts:
   files:
     - build/**/*
     - appspec.yml
     - Scripts/**/*
+
