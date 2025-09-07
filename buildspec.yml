@@ -1,29 +1,23 @@
 version: 0.2
+
 phases:
-  install:
-    runtime-versions:
-      nodejs: 18
-    commands:
-      - echo "Instalando dependências..."
-      - npm ci
   pre_build:
     commands:
-      - echo "Iniciando pre_build em $(date)"
+      - echo "Instalando dependências..."
+      - npm install
+
   build:
     commands:
       - echo "Build iniciado em $(date)"
       - npm run build
+
   post_build:
     commands:
       - echo "Build finalizado em $(date)"
+
 artifacts:
   files:
     - build/**/*
     - appspec.yml
     - Scripts/**/*
   discard-paths: no
-
-cache:
-  paths:
-    - 'node_modules/**/*'
-
