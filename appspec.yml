@@ -1,32 +1,25 @@
-version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /var/www/html
+version: 0.2
 
-hooks:
-  ApplicationStop:
-    - location: Scripts/app_stop.sh
-      timeout: 60
-      runas: root
+phases:
+  pre_build:
+    commands:
+      - echo "Instalando dependências..."
+      - npm install
 
-  BeforeInstall:
-    - location: Scripts/before_install.sh
-      timeout: 60
-      runas: root
+  build:
+    commands:
+      - echo "Build iniciado em $(date)"
+      - npm run build
 
-  AfterInstall:
-    - location: Scripts/after_install.sh
-      timeout: 60
-      runas: root
+  post_build:
+    commands:
+      - echo "Build finalizado em $(date)"
 
-  ApplicationStart:
-    - location: Scripts/app_start.sh
-      timeout: 60
-      runas: root
+artifacts:
+  files:
+    - build/**/*
+    - appspec.yml
+    - Scripts/**/*
+  discard-paths: no
 
-  ValidateService:
-    - location: Scripts/validate_service.sh
-      timeout: 60
-      runas: root
 
