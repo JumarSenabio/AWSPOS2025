@@ -1,22 +1,26 @@
 version: 0.2
-
 phases:
+  install:
+    runtime-versions:
+      nodejs: 18 # ajuste a versão do Node que seu projeto usa
+    commands:
+      - echo "Instalando dependências..."
+      - npm ci
   pre_build:
     commands:
-      - echo Instalando dependencias
-      - npm install
-
+      - echo "Verificando dependências de segurança e lint (opcional)"
+      # - npm audit --production
+      # - npm run lint
   build:
     commands:
-      - echo Build iniciado em $(date)
+      - echo "Build iniciado em $(date)"
       - npm run build
-
   post_build:
     commands:
-      - echo Build Finalizado em $(date)
-
+      - echo "Build finalizado em $(date)"
 artifacts:
   files:
     - build/**/*
-    - Scripts/**/*
     - appspec.yml
+    - Scripts/**/* # deixe apenas se realmente precisa desta pasta
+  discard-paths: no
