@@ -1,5 +1,4 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
@@ -7,20 +6,16 @@ phases:
     commands:
       - echo "Instalando dependências..."
       - npm ci
-
   pre_build:
     commands:
       - echo "Iniciando pre_build em $(date)"
-
   build:
     commands:
       - echo "Build iniciado em $(date)"
       - npm run build
-
   post_build:
     commands:
       - echo "Build finalizado em $(date)"
-
 artifacts:
   files:
     - build/**/*
@@ -31,3 +26,4 @@ artifacts:
 cache:
   paths:
     - 'node_modules/**/*'
+
